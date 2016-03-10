@@ -1,12 +1,46 @@
-#!/usr/bin/env node
-var prompt = require('prompt');
-var colors = require('colors');
+if (typeof module !== 'undefined') {
+  var prompt = require('prompt');
+  var colors = require('colors');
 
-var Player = require('./lib/player.js');
-var Card = require('./lib/card.js');
-var Stack = require('./lib/stack.js');
+  var Player = require('./lib/player.js');
+  var Card = require('./lib/card.js');
+  var Stack = require('./lib/stack.js');
+}
 
 var order = [],
     players = {},
+    turn = 0,
+    lastTurnIndex = 0,
     stack = new Stack();
-    
+
+var command = function(input, cb) {
+  if (input.match(/(\d+), *(\d+)/g)) {
+    var player = players[order[turn % order.length]];
+    var playerName = order[turn % order.length];
+    var count = input.match(/(\d+), *(\d+)/i)[1];
+    var number = input.match(/(\d+), *(\d+)/i)[2];
+    player.turn.play(count, number);
+    turn++;
+    lastTurnIndex = stack.history.length;
+    return 'Player "' + playerName + '" played ' + count + ' ' + number + 's';
+  } else if (input.match(/Add *Player *(.\D\S*)/i)) {
+    var name = input.match(/Add *Player *(.\D\S*)/i)[1];
+    players[name] = new Player(stack);
+    order.push(name);
+    return 'Added Player "'  + name + '"';
+  } else if (input.match(/bs, *(\w*), *(\w*), *(true|false)/i)) {
+    var player1 = input.match(/bs, *(\w*), *(\w*), *(true|false)/i)[1];
+    var player2 = input.match(/bs, *(\w*), *(\w*), *(true|false)/i)[2];
+    var lie = input.match(/bs, *(\w*), *(\w*), *(true|false)/i)[3];
+    players[player1].turn.bs(player2, lie);
+    if (lie) {
+      return 'Nice Call!';
+    } else {
+      return 'Better luck next time!';
+    }
+  } else if (input.match(/pb, *(\w*)/i)) {
+    var liar = input.match(/pb, *(\w*)/i)[1];
+    players[liar].turn.pb();
+    return 'Thanks for telling me!';
+  }
+};
