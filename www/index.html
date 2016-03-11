@@ -3,17 +3,53 @@
   <head>
     <meta charset="utf-8">
     <title>BSBOT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Cuprum:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/styles.min.css">
   </head>
   <body>
 
-    <input type="text" class="command" autocomplete="false" autofocus="true">
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <a class="navbar-brand" href="/" tabindex="-1">BSBot</a>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-5">Commands</h1>
+          <hr>
+          <dl class="dl-horizontal">
+            <dt class="col-sm-5"><code>Add Player [player]</code></dt>
+            <dd class="col-sm-6">Adds a player with the name of [player]</dd>
+
+            <dt class="col-sm-5"><code>[quantity (1-4)], [card (1-13)]</code></dt>
+            <dd class="col-sm-6">Puts cards down for the current player</dd>
+
+            <dt class="col-sm-5"><code>BS, [player1], [player2], [true/false]</code></dt>
+            <dd class="col-sm-6">Tells BSBot that [player1] called BS on [player2] and did they get the cards? [true/false]</dd>
+
+            <dt class="col-sm-5"><code>PB, [player]</code></dt>
+            <dd class="col-sm-6">Tells BSBot that [player] is lying</dd>
+
+            <dt class="col-sm-5"><code>cards, [player]/stack</code></dt>
+            <dd class="col-sm-6">Find out how the cards that a player has or are in the main stack</dd>
+          </dl>
+        </div>
+      </div>
+      <form action="javascript:void(0)" class="form-inline command-form">
+        <div class="form-group">
+          <input type="text" class="form-control form-control-lg command" autocomplete="false" autofocus="true" placeholder="Type Commands Here">
+        </div>
+        <button type="submit" class="btn btn-lg submit" name="button">Submit</button>
+      </form>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.min.js" charset="utf-8"></script>
     <script src="/js/scripts.min.js" charset="utf-8"></script>
     <script src="http://localhost:35729/livereload.js" charset="utf-8"></script>
   </body>

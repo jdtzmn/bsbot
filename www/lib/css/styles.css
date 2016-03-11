@@ -1,0 +1,35 @@
+body {
+  background: #005F6B;
+  font-family: 'Cuprum', sans-serif;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+div.jumbotron {
+  margin-top: 10vh;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: 1vw;
+}
+input.command {
+  height: 20vh;
+  width: 100% !important;
+  font-size: 4vmin;
+  text-align: center;
+  border-width: 0.2vw;
+  -webkit-transition: transform 0.5s;
+  -o-transition: transform 0.5s;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+}
+input.command:focus {
+  transform: scale(1.01, 1.01);
+}
+button.submit {
+  border-radius: none;
+  width: 19.6% !important;
+  height: 20vh;
+  font-size: 4vmin;
+}
+form.command-form > div.form-group {
+  width: 80%;
+}
