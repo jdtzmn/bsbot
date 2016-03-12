@@ -8,7 +8,7 @@ var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 
 gulp.task('js', function() {
-	return gulp.src('www/lib/**/*.js')
+	return gulp.src(['lib/*.js','www/lib/**/*.js'])
 		.pipe(sourcemaps.init())
 			.pipe(jshint())
 			.pipe(jshint.reporter('jshint-stylish'))
